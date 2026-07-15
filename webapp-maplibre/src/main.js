@@ -1,10 +1,10 @@
 import { Map } from 'maplibre-gl';
-import { addKotaLayer, addPulauLayer } from './layers/vector';
-import { addSpongebobImage } from './layers/raster';
+// import { addKotaLayer, addPulauLayer } from './layers/vector';
+// import { addSpongebobImage } from './layers/raster';
 
 const mapElement = document.createElement('div');
 mapElement.id = 'map';
-mapElement.style.height = '300px';
+mapElement.style.height = '550px';
 document.body.appendChild(mapElement);
 
 const map = new Map({
@@ -13,6 +13,25 @@ const map = new Map({
   center: [106.83, -6.19],
   zoom: 1
 });
+
+const data = { 
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Jakarta"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.8404846,
+          -6.2177536
+        ]
+      }
+    }
+  ]
+}
 
 map.on('load', () => {
   addKotaLayer(map);
