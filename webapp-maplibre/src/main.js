@@ -33,8 +33,25 @@ const data = {
   ]
 }
 
+
 map.on('load', () => {
-  addKotaLayer(map);
-  addPulauLayer(map);
-  addSpongebobImage(map);
+map.addSource('kota', {
+  type: 'geojson',
+  data: data
+});
+
+map.addLayer({
+  id: 'titik-kota',
+  type: 'circle',
+source: 'kota',
+  paint: {
+    'circle-radius': 10,
+    'circle-color': '#FF0000',
+    'circle-stroke-width': ,
+    'circle-stroke-color' : 'black'
+  }
+});
+  // addKotaLayer(map);
+  // addPulauLayer(map);
+  // addSpongebobImage(map);
 });
