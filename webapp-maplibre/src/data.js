@@ -1,10 +1,7 @@
 //Import Assets
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { Map } from 'maplibre-gl';
-
-//Import Folder layers
 import { addKotaLayer, addPulauLayer } from './layers/vector.js';
-import { addSpongebobImage } from './layers/raster.js';
 
 const mapElement = document.createElement('div');
 mapElement.id = 'map';
@@ -18,9 +15,6 @@ const map = new Map({
   zoom: 1
 });
 
-// 2. Panggil fungsi-fungsi yang sudah di-import di dalam event 'load'
 map.on('load', () => {
   addKotaLayer(map);
-  addPulauLayer(map);
-  addSpongebobImage(map);
-});
+  });
