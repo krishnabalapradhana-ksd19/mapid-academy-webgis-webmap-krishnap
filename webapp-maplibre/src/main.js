@@ -1,6 +1,6 @@
 //Import Assets
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { Map } from 'maplibre-gl';
+import { Map, FullscreenControl, GlobeControl, LogoControl } from 'maplibre-gl';
 import {addAttribution} from './controls/basic.control.js';
 
 //Import Folder layers
@@ -28,3 +28,7 @@ map.on('load', () => {
   addPulauLayer(map);
   addSpongebobImage(map);
 });
+
+map.addControl(new FullscreenControl(), 'top-right');
+map.addControl(new GlobeControl());
+map.addControl(new LogoControl({compact: false}));
