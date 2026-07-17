@@ -2,6 +2,7 @@
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { Map, FullscreenControl, GlobeControl, LogoControl } from 'maplibre-gl';
 import {addAttribution} from './controls/basic.control.js';
+import {LogoHondaControl} from './controls/customLogoControls.js';
 
 //Import Folder layers
 import { addKotaLayer, addPulauLayer } from './layers/vector.js';
@@ -32,3 +33,4 @@ map.on('load', () => {
 map.addControl(new FullscreenControl(), 'top-right');
 map.addControl(new GlobeControl());
 map.addControl(new LogoControl({compact: false}));
+map.addControl(new LogoHondaControl(), 'top-left');
