@@ -1,6 +1,7 @@
 //Import Assets
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { Map } from 'maplibre-gl';
+import {addAttribution} from './controls/basic.control.js';
 
 //Import Folder layers
 import { addKotaLayer, addPulauLayer } from './layers/vector.js';
@@ -15,9 +16,12 @@ const map = new Map({
   container: 'map',
   style: 'https://demotiles.maplibre.org/globe.json',
   center: [106.83, -6.19],
-  zoom: 1
+  zoom: 1,
+  attributionControl: false
 });
 
+addAttribution(map);
+ 
 // 2. Panggil fungsi-fungsi yang sudah di-import di dalam event 'load'
 map.on('load', () => {
   addKotaLayer(map);
