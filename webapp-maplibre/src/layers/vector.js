@@ -1,6 +1,7 @@
 // Import data geojson dari folder assets
 import naturalEarthData from '../assets/ne_populated.geojson?url';
 import pulauKalimantan from '../assets/Kalimantan.geojson?url';
+import jalurPesawat from '../assets/Jalur_Pesawat.geojson?url';
 
 //Export function untuk menambahkan layer kota
 export function addKotaLayer(map) {
@@ -39,4 +40,22 @@ map.addLayer({
     'fill-opacity': 0.5
   }
 });
+}
+
+export function addJalurPesawatLayer(map) {
+  map.addSource('jalur-pesawat', {
+    type: 'geojson',
+    data: jalurPesawat
+  });
+
+  map.addLayer({
+    id: 'garis-jalur-pesawat',
+    type: 'line',
+    source: 'jalur-pesawat',
+    paint: {
+      'line-color': '#ff00ddce', 
+      'line-width': 5,
+      'line-opacity': 0.9
+    }
+  });
 }

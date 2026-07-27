@@ -1,6 +1,6 @@
 import logoHonda from "../logo/Honda.png";
 
-export class LogoHondaControl {
+export class LogoHondaControl  {
     onAdd(map) {
         this._map = map;
         this._container = document.createElement('div');
