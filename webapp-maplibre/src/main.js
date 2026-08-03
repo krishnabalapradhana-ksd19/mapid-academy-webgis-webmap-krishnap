@@ -1,14 +1,16 @@
 //Import Assets
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { Map, 
+import { 
+  Map, 
   FullscreenControl, 
   GlobeControl, 
   LogoControl,
   Popup
- } from 'maplibre-gl';
+} from 'maplibre-gl';
 import {addAttribution} from './controls/basic.control.js';
 import {LogoHondaControl} from './controls/customLogoControls.js';
 import { addKotaPopup } from './popups/layerPopups.js';
+import {storeAreaGeometry} from './engine/areaTools.js';
 
 //Import Folder layers
 import { addKotaLayer, addPulauLayer, addJalurPesawatLayer } from './layers/vector.js';
@@ -45,24 +47,34 @@ map.on('load', () => {
   addJalurPesawatLayer(map);
 });
 
-// Event Listener: Menampilkan popup saat titik kota diklik
+// ==========================================
+// KUMPULAN EVENT LISTENER
+// ==========================================
+
+// Titik Kota
 map.on('click', 'titik-kota', (event) => {
-    addKotaPopup(map, event);
+  addKotaPopup(map, event);
 });
-
-
-// Event Listener: Mengubah kursor mouse menjadi pointer saat berada di atas titik kota
 map.on('mouseenter', 'titik-kota', () => {
   map.getCanvas().style.cursor = 'pointer';
 });
-
-// Event Listener: Mengembalikan kursor ke normal saat mouse keluar dari titik kota
 map.on('mouseleave', 'titik-kota', () => {
+  map.getCanvas().style.cursor = '';
+});
+
+// Pulau Kalimantan
+map.on("click", "pulau-kalimantan", function (event) {
+  storeAreaGeometry(event);
+});
+map.on('mouseenter', 'pulau-kalimantan', () => {
+  map.getCanvas().style.cursor = 'pointer';
+});
+map.on('mouseleave', 'pulau-kalimantan', () => {
   map.getCanvas().style.cursor = '';
 });
 
 // Menambahkan kontrol antarmuka
 map.addControl(new FullscreenControl(), 'top-right');
 map.addControl(new GlobeControl());
-map.addControl(new LogoControl({compact: false}));
+map.addControl(new LogoControl({ compact: false }));
 map.addControl(new LogoHondaControl(), 'top-left');
