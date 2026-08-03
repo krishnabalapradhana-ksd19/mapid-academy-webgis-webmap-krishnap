@@ -59,3 +59,23 @@ export function addJalurPesawatLayer(map) {
     }
   });
 }
+// Di dalam file /src/layers/vector.js
+
+export function addBufferLayer(map, data){
+    const fid = getRandomInt(1, 1000);
+    
+    map.addSource(String(fid), {
+        type: "geojson",
+        data: data
+    });
+
+    map.addLayer({
+        id: `area-${fid}`,
+        type: "fill",
+        source: String(fid),
+        paint: {
+            "fill-color": "red",
+            "fill-outline-color": "black"
+        }
+    });
+}

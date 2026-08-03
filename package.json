@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@terraformer/wkt": "^2.2.2"
+  }
+}

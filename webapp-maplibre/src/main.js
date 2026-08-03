@@ -11,6 +11,7 @@ import {addAttribution} from './controls/basic.control.js';
 import {LogoHondaControl} from './controls/customLogoControls.js';
 import { addKotaPopup, addPulauPopup } from './popups/layerPopups.js';
 import {storeAreaGeometry} from './engine/areaTools.js';
+import {storeBufferGeometry} from './engine/bufferTools.js';
 
 //Import Folder layers
 import { addKotaLayer, addPulauLayer, addJalurPesawatLayer } from './layers/vector.js';
