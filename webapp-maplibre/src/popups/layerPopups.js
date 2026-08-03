@@ -57,3 +57,17 @@ export function addKotaPopup(map, event) {
         `)
         .addTo(map);
 }
+
+export function addPulauPopup(map, event) {
+    // Membuat instansi Popup baru
+    return new Popup()
+        .setLngLat(event.lngLat)
+        .setHTML(`
+            <div style="color: black; font-family: sans-serif;">
+                <h3 style="margin: 0 0 5px 0;">Informasi Pulau</h3>
+                <!-- Menambahkan teks loading sementara menunggu hasil dari backend -->
+                <div id="luas">Sedang menghitung luasan...</div>
+            </div>
+        `)
+        .addTo(map);
+}

@@ -9,7 +9,7 @@ import {
 } from 'maplibre-gl';
 import {addAttribution} from './controls/basic.control.js';
 import {LogoHondaControl} from './controls/customLogoControls.js';
-import { addKotaPopup } from './popups/layerPopups.js';
+import { addKotaPopup, addPulauPopup } from './popups/layerPopups.js';
 import {storeAreaGeometry} from './engine/areaTools.js';
 
 //Import Folder layers
@@ -64,7 +64,11 @@ map.on('mouseleave', 'titik-kota', () => {
 
 // Pulau Kalimantan
 map.on("click", "pulau-kalimantan", function (event) {
-  storeAreaGeometry(event);
+    // 1. Tampilkan popup dan simpan objeknya ke dalam variabel
+    const activePopup = addPulauPopup(map, event);
+    
+    // 2. Lakukan perhitungan luasan dengan mengirimkan data event DAN objek popup
+    storeAreaGeometry(event, activePopup);
 });
 map.on('mouseenter', 'pulau-kalimantan', () => {
   map.getCanvas().style.cursor = 'pointer';
@@ -72,6 +76,8 @@ map.on('mouseenter', 'pulau-kalimantan', () => {
 map.on('mouseleave', 'pulau-kalimantan', () => {
   map.getCanvas().style.cursor = '';
 });
+
+
 
 // Menambahkan kontrol antarmuka
 map.addControl(new FullscreenControl(), 'top-right');
