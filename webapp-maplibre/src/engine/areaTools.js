@@ -13,7 +13,7 @@ export async function storeAreaGeometry(event, popupInstance) {
 
     // Jika hasil dari backend berhasil didapatkan
     if (result && result.area_ha !== undefined) {
-        // Format angka luasan agar rapi (misal: 127.972.443,92)
+        // Format nangka luasan agar rapi (misal: 127.972.443,92)
         const formattedArea = Number(result.area_ha).toLocaleString('id-ID', { 
             minimumFractionDigits: 2, 
             maximumFractionDigits: 2 

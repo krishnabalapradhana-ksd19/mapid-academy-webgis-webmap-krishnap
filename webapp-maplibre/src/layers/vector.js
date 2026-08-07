@@ -61,6 +61,10 @@ export function addJalurPesawatLayer(map) {
 }
 // Di dalam file /src/layers/vector.js
 
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 export function addBufferLayer(map, data){
     const fid = getRandomInt(1, 1000);
     
@@ -74,7 +78,7 @@ export function addBufferLayer(map, data){
         type: "fill",
         source: String(fid),
         paint: {
-            "fill-color": "red",
+            "fill-color": "blue",
             "fill-outline-color": "black"
         }
     });

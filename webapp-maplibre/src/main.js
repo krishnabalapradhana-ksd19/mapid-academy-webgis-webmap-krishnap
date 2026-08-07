@@ -55,6 +55,7 @@ map.on('load', () => {
 // Titik Kota
 map.on('click', 'titik-kota', (event) => {
   addKotaPopup(map, event);
+  storeBufferGeometry(map, event);
 });
 map.on('mouseenter', 'titik-kota', () => {
   map.getCanvas().style.cursor = 'pointer';
