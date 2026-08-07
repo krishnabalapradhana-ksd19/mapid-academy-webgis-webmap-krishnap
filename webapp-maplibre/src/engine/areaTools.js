@@ -1,5 +1,7 @@
 // File: /src/engine/areaTools.js
 
+import { API_BASE_URL } from "../config.js";
+
 export async function storeAreaGeometry(event, popupInstance) {
     const geometry = event.features[0];
     
@@ -54,7 +56,7 @@ function geojsonToWKT(geom) {
 // Fungsi pembantu untuk memanggil API Flask
 async function computeArea(wkt) {
     try {
-        const response = await fetch("http://127.0.0.1:5000/spatial_computation/area", {
+        const response = await fetch(`${API_BASE_URL}/spatial_computation/area`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ geometry: wkt }) 

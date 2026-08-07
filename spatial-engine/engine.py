@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, request
 
 from toolbox.geometry_manipulation.buffer import buffer_geometry
@@ -10,7 +12,13 @@ from toolbox.spatial_computation.length import calculate_length
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
+
+# ALLOWED_ORIGINS: daftar origin frontend dipisah koma, contoh:
+# "https://nama-app.onrender.com,http://localhost:5173"
+# Default "*" agar dev lokal tetap mudah; set env var ini di production.
+_allowed_origins = os.environ.get("ALLOWED_ORIGINS", "*")
+origins = "*" if _allowed_origins == "*" else _allowed_origins.split(",")
+CORS(app, origins=origins)
 
 @app.route("/spatial_computation/area", methods=['POST'])
 def area():
